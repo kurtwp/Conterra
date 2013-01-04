@@ -1,5 +1,5 @@
 <?php
-
+require_once 'header.html';
 $i = 0; // for counter
 $arrayCount = 0; // Amount of elements in an Array
 $insideNetwork = ""; // Inside subnet RFC1918

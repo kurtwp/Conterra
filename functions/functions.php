@@ -36,7 +36,27 @@ function validateInsideMask($mask)
     $tempArrayCount = count($tempArray);
     If ($tempArrayCount < 4 || $tempArrayCount > 4) {
         return "Invalid Mask";
+    } elseif ($tempArrayCount == 4) {
+	for ($i=0; $i<3; $i++)
+        {
+            if ($tempArray[$i] != 255)
+            {
+                return "The Fist 3 octets need to be 255";
+            }
+        }
+    } elseif ($tempArray[3] != "") {
+	for ($k=0;$k<10;$k++)
+	{
+	    if ($octect[$k] == $tempArray[3])
+	    {
+		return "";
+	    }
+	}
     } else {
+	return "Fouth Octet if wrong";
+    }
+	
+	/*
         for ($i=0; $i<3; $i++)
         {
             if ($tempArray[$i] != 255)
@@ -44,7 +64,7 @@ function validateInsideMask($mask)
                 return "The Fist 3 octets need to be 255";
             }
         }
-	for ($k=0;$k<4;$k++)
+	for ($k=0;$k<10;$k++)
 	{
 	    if ($tempArray[3] == "")
 	    {
@@ -58,7 +78,7 @@ function validateInsideMask($mask)
 		return "Fouth Octect is Wrong";
 	    }
 	}
-    } 
+    } */
 }
 // Validates Outside IP
 function validateOutsideIP($ip)

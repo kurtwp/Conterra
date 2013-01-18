@@ -3,6 +3,7 @@
 // Validate VlAN
 function validateVLAN($vlan) {
     
+    // Reg Ex checks for postive numbers only
     $regexp = '/^\d+$/';
     
     if ($vlan == "")
@@ -34,51 +35,35 @@ function validateInsideMask($mask)
     
     $tempArray = explode(".",$mask);
     $tempArrayCount = count($tempArray);
-    If ($tempArrayCount < 4 || $tempArrayCount > 4) {
+    If ($tempArrayCount < 4 || $tempArrayCount > 4)
+    {
         return "Invalid Mask";
-    } elseif ($tempArrayCount == 4) {
+    }
+    if ($tempArrayCount == 4)
+    {
 	for ($i=0; $i<3; $i++)
         {
-            if ($tempArray[$i] != 255)
+            if ($tempArray[$i] != 255 || $tempArray[3] == "")
             {
                 return "The Fist 3 octets need to be 255";
             }
         }
-    } elseif ($tempArray[3] != "") {
-	for ($k=0;$k<10;$k++)
-	{
-	    if ($octect[$k] == $tempArray[3])
-	    {
-		return "";
-	    }
-	}
-    } else {
-	return "Fouth Octet if wrong";
     }
-	
-	/*
-        for ($i=0; $i<3; $i++)
+    if ($tempArrayCount == 4)
+    {
+        for ($k=0;$k<10;$k++)
         {
-            if ($tempArray[$i] != 255)
-            {
-                return "The Fist 3 octets need to be 255";
-            }
-        }
-	for ($k=0;$k<10;$k++)
-	{
-	    if ($tempArray[3] == "")
-	    {
-		return "Missing Fouth Octect";
-	    }
-	    elseif ($octect[$k] == $tempArray[3])
+            
+            if ($octect[$k] == $tempArray[3])
 	    {
 		return "";
-	    }else
-	    {
-		return "Fouth Octect is Wrong";
 	    }
-	}
-    } */
+        }
+        if ($k == 10)
+        {
+            return "Fouth octect is invalid";
+        }
+    } 
 }
 // Validates Outside IP
 function validateOutsideIP($ip)

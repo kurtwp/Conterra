@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 $fail = validate_regionName($regionName);
 $fail .= validateOutsideIP($outsideIP);
 $fail .= validateInsideMask($insideMask);
+$fail .= validateVLAN($mapNumber);
 
 echo "<html><head><title>An Example Form</title>";
 

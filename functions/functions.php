@@ -1,10 +1,40 @@
 <?php
+
+// Validate VlAN
+function validateVLAN($vlan) {
+    
+    $regexp = '/^\d+$/';
+    
+    if ($vlan == "")
+    {
+	return "Please enter a VLAN Number<br />";
+    }
+    if (preg_match($regexp, $vlan))
+    {
+	return "";
+    } else {
+	return "No a number";
+    }
+  
+}
+// Validate Region Name
+function validate_regionName($field) {
+    	if ($field == "") return "No Region Name was entered<br />";
+	return "";
+}
 //Validates Inside Masks
 function validateInsideMask($mask)
 {
+    $octect = array(0,128,192,224,240,248,252,254,255);
+
+    if ($mask == "")
+    {
+	return "No Inside Mask was entered <br />";
+    }
+    
     $tempArray = explode(".",$mask);
     $tempArrayCount = count($tempArray);
-    If ($tempArrayCount < 4) {
+    If ($tempArrayCount < 4 || $tempArrayCount > 4) {
         return "Invalid Mask";
     } else {
         for ($i=0; $i<3; $i++)
@@ -14,7 +44,21 @@ function validateInsideMask($mask)
                 return "The Fist 3 octets need to be 255";
             }
         }
-    }
+	for ($k=0;$k<4;$k++)
+	{
+	    if ($tempArray[3] == "")
+	    {
+		return "Missing Fouth Octect";
+	    }
+	    elseif ($octect[$k] == $tempArray[3])
+	    {
+		return "";
+	    }else
+	    {
+		return "Fouth Octect is Wrong";
+	    }
+	}
+    } 
 }
 // Validates Outside IP
 function validateOutsideIP($ip)
@@ -26,7 +70,7 @@ function validateOutsideIP($ip)
         return "";
     }
     
-    return "Outside IP not valid !!\n";
+    return "Outside IP not valid !! <br />";
 }
 
 //orignal validateIP functions
@@ -53,12 +97,6 @@ if ($results) {
 } else {
     echo "Not valid";
 }  */
-
-// Validate Region Name
-function validate_regionName($field) {
-    	if ($field == "") return "No Region Name was entered<br />";
-	return "";
-}
 
 
 ?>

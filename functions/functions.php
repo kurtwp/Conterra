@@ -8,19 +8,19 @@ function validateVLAN($vlan) {
     
     if ($vlan == "")
     {
-	return "Please enter a VLAN Number<br />";
+	return "Please enter a VLAN Number !<br />";
     }
     if (preg_match($regexp, $vlan))
     {
 	return "";
     } else {
-	return "No a number";
+	return "VLAN ID must all numbers !";
     }
   
 }
 // Validate Region Name
 function validate_regionName($field) {
-    	if ($field == "") return "No Region Name was entered<br />";
+    	if ($field == "") return "Please enter a Region Name !<br />";
 	return "";
 }
 //Validates Inside Masks
@@ -30,7 +30,7 @@ function validateInsideMask($mask)
 
     if ($mask == "")
     {
-	return "No Inside Mask was entered <br />";
+	return "Please enter an Inside Mask !<br />";
     }
     
     $tempArray = explode(".",$mask);
@@ -73,10 +73,30 @@ function validateOutsideIP($ip)
     if (preg_match($regexp, $ip))
     {
         return "";
+    } elseif ($ip == "") {
+	return "Please enter an Outside IP address ! <br />";
+    } else {
+	return "Outside IP not valid ! <br />";
     }
     
-    return "Outside IP not valid !! <br />";
+    
 }
+function validateInsideIP($ip)
+{
+    $regexp = '/^((1?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(1?\d{1,2}|2[0-4]\d|25[0-5])$/';
+    
+    if (preg_match($regexp, $ip))
+    {
+        return "";
+    } elseif ($ip == "") {
+	return "Please enter an Inside IP address ! <br />";
+    } else {
+	return "Inside IP not valid ! <br />";
+    }
+    
+    
+}
+// Validate Inside IP
 
 //orignal validateIP functions
 /* function validateIP($ip)

@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     
 $fail = validate_regionName($regionName);
 $fail .= validateOutsideIP($outsideIP);
+$fail .=validateInsideIP($insideNetwork);
 $fail .= validateInsideMask($insideMask);
 $fail .= validateVLAN($mapNumber);
 
@@ -89,12 +90,12 @@ Map #: <input type='text' size="10" maxlength='10' name='mapNumber' value='$mapN
 <input type='submit' value='submit' />
 </form>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function validateRegionname(field) {
 	if (field == "") return "No Region Name was entered.\\n"
 	return ""
 }
-</script>
+</script> -->
 </body>
 </html>
 _END;

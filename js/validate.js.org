@@ -1,0 +1,20 @@
+
+function validate(field) {
+
+	function validateegionname(field) {
+		if (field == "") return "No Region Name was entered.\\n"
+		return ""
+	}
+	
+	function validateRegionname(field) {
+		if (field=="") {
+			alert("You have to fill in a Region Name");
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+// End validate function
+}

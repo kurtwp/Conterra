@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     
 $fail = validate_regionName($regionName);
 $fail .= validateOutsideIP($outsideIP);
-$fail .=validateInsideIP($insideNetwork);
+$fail .= validateInsideIP($insideNetwork);
 $fail .= validateInsideMask($insideMask);
 $fail .= validateVLAN($mapNumber);
 
@@ -77,10 +77,11 @@ echo "<html><head><title>An Example Form</title>";
 }
 
 echo <<<_END
+
 <p>$fail</p>
 
 <br />
-<form action="asa.php" method="post" onSubmit="return validate(this)">
+<form name="form" action"asa.php" method="post" onSubmit="return validate();">
 Region: <input type='text' size="20" maxlength='50' name='regionName' value='$regionName' /><br />
 Outside IP: <input type='text' size="20" maxlength='50' name='outsideIP' value='$outsideIP' /><br />
 Enter multiple Inside networks  by putting a comma after the network e.g. IP<strong>,</strong>IP<strong>,</strong>IP- only works with IP not masks <br />
@@ -90,12 +91,6 @@ Map #: <input type='text' size="10" maxlength='10' name='mapNumber' value='$mapN
 <input type='submit' value='submit' />
 </form>
 
-<!-- <script type="text/javascript">
-function validateRegionname(field) {
-	if (field == "") return "No Region Name was entered.\\n"
-	return ""
-}
-</script> -->
 </body>
 </html>
 _END;

@@ -1,5 +1,5 @@
 <?php
-//require_once 'header.html';
+require_once 'header.html';
 //require_once 'functions/metronidFunctions.php';
 //$i = 0; // for counter
 //$arrayCount = 0; // Amount of elements in an Array
@@ -26,27 +26,31 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     if (isset($_POST['circID']))
     {
-        $circID = $_POST['circID'];
+        $circID = strtoupper($_POST['circID']);
     }
     if (isset($_POST['gateIP']))
     {
 		$gateIP = $_POST['gateIP'];
     }
-	$fail = "he";
 
-	if ($fail != "") {
-		echo "</head><body>Form data successfully validated for: $hostName </body></html>";
+	if ($fail == "") {
 		// Start to print the MetroNID configuration
 		echo "</head><body>Form data successfully validated for: $hostName </body></html>";
 		echo "<textarea rows='18' cols='130'>";
 		echo "session writelock " . "\n";
 		echo "interface edit Management dhcp disable" . "\n";
-		echo "interface edit Network dhcp disable" . "\n"
-		echo "interface edit Management address $manaIP netmask $manaMask gateway $gateIP" . "\n";
+		echo "interface edit Network dhcp disable" . "\n";
+		echo "interface edit Management address " . $manaIP . " netmask " . $manaMask . " gateway " . $gateIP . "\n";
 		echo "interface edit Auto state disable" . "\n";
-		echo "dns edit hostname $hostName ND01" . "\n";
+		echo "dns edit hostname $hostName.ND01" . "\n";
+		echo " Circuit ID = " . $circID . "\n";
+		
+		echo "</textarea>";
+		require_once 'footer.html';
 		exit;
-	} 
+	}
+	
+		
 }
 
 echo <<<_END
@@ -65,6 +69,6 @@ Circuit ID: <input type='text' size="10" maxlength="15" name='circID' value='$ci
 </html>
 _END;
 
-
+require_once 'footer.html';
 
 ?>

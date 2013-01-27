@@ -1,6 +1,6 @@
 <?php
 require_once 'header.html';
-//require_once 'functions/metronidFunctions.php';
+require_once 'functions/metroFunctions.php';
 //$i = 0; // for counter
 //$arrayCount = 0; // Amount of elements in an Array
 $circID = ""; // Citcuit ID
@@ -32,6 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     {
 		$gateIP = $_POST['gateIP'];
     }
+    
+$fail = validateHostName($hostName);
+$fail .= validateInsideIP($manaIP);
+$fail .= validateInsideMask($manaMask);
 
 	if ($fail == "") {
 		// Start to print the MetroNID configuration
@@ -43,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		echo "interface edit Management address " . $manaIP . " netmask " . $manaMask . " gateway " . $gateIP . "\n";
 		echo "interface edit Auto state disable" . "\n";
 		echo "dns edit hostname $hostName.ND01" . "\n";
-		echo " Circuit ID = " . $circID . "\n";
+		echo "Circuit ID = " . $circID . "\n";
 		
 		echo "</textarea>";
 		require_once 'footer.html';

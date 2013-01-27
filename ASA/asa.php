@@ -1,6 +1,6 @@
 <?php
 require_once 'header.html';
-require_once 'functions/functions.php';
+require_once 'functions/asaFunctions.php';
 $i = 0; // for counter
 $arrayCount = 0; // Amount of elements in an Array
 $insideNetwork = ""; // Inside subnet RFC1918

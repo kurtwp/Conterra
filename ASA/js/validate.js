@@ -2,11 +2,7 @@
 function validate() {
 	
 	var regName = document.form.regionName;
-	
-	if (validateRegionName(regName))
-	{
-		
-	}
+	return validateRegionName(regName);
 
 	function validateRegionName(regName) {
 		var reg_len = regName.value.length;

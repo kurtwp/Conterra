@@ -20,7 +20,7 @@ function validateVLAN($vlan) {
 // Validate Region Name
 function validate_regionName($name) {
     
-    $regexp = '/[a-zA-Z][a-zA-Z]\.[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z]\.[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z]/';
+    $regexp = '/[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z]{7}/';
     
     if ($name != "") {
         if (preg_match($regexp, $name)) {
@@ -102,7 +102,6 @@ function validateInsideIP($ip)
             if (preg_match($regexp, $tempIP[$i])) {
                 if ($firstOctect[0] != 10) {
                     $results += 1;
-                    echo $results;
                 } 
             } else {
                 return "Invalid IP <br />";

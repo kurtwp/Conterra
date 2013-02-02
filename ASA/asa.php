@@ -81,7 +81,7 @@ echo <<<_END
 <p>$fail</p>
 
 <br />
-<form name="form" action"asa.php" method="post" onSubmit="return validate();">
+<form action"asa.php" method="post" onSubmit="return validate(this)">
 Region: <input type='text' size="20" maxlength='50' name='regionName' value='$regionName' /><br />
 Outside IP: <input type='text' size="20" maxlength='50' name='outsideIP' value='$outsideIP' /><br />
 Enter multiple Inside networks  by putting a comma after the network e.g. IP<strong>,</strong>IP<strong>,</strong>IP- only works with IP not masks <br />

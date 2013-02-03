@@ -76,7 +76,16 @@
 					}
 				}
 			}
-			
+			if (arrayCnt == 4) {
+				for (k=0;k<10;k++) {
+					if (octect[k] == tmpArray[3]) {
+						return "";
+					}
+				}
+				if (k == 10) {
+					return "Fouth octect is invalid \n";
+				}
+			}
 		} else {
 			return "Pleae enter an Inside Mask \n";
 		}

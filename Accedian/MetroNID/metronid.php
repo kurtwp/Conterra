@@ -2,12 +2,13 @@
 require_once 'header.html';
 require_once 'functions/metroFunctions.php';
 //$i = 0; // for counter
-//$arrayCount = 0; // Amount of elements in an Array
+$arrayCount = 0; // Amount of elements in an Array
 $circID = ""; // Citcuit ID
 $gateIP = ""; // Gateway IP 
 $hostName =""; // Host Name for MetroNID
 $manaIP = ""; // MetroNID Management IP address
 $manaMask = ""; // MetroNID Management Subnet Mask
+$tempCircID = ""; // Place holder after explode function
 $fail = "";
 //$field = "";
 
@@ -27,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['circID']))
     {
         $circID = strtoupper($_POST['circID']);
+		$tempCircID = explode(",",$circID);
+		$arrayCount = count($tempCircID);
     }
     if (isset($_POST['gateIP']))
     {
@@ -34,21 +37,67 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     
 $fail = validateHostName($hostName);
-$fail .= validateInsideIP($manaIP);
-$fail .= validateInsideMask($manaMask);
+$fail .= validateManagementIP($manaIP);
+$fail .= validateManagementMask($manaMask);
+$fail .= validateCircuitID($circID);
+$fail .= validateGatewayIP($gateIP);
 
 	if ($fail == "") {
 		// Start to print the MetroNID configuration
-		echo "</head><body>Form data successfully validated for: $hostName </body></html>";
-		echo "<textarea rows='18' cols='130'>";
-		echo "session writelock " . "\n";
-		echo "interface edit Management dhcp disable" . "\n";
-		echo "interface edit Network dhcp disable" . "\n";
-		echo "interface edit Management address " . $manaIP . " netmask " . $manaMask . " gateway " . $gateIP . "\n";
-		echo "interface edit Auto state disable" . "\n";
-		echo "dns edit hostname $hostName.ND01" . "\n";
-		echo "Circuit ID = " . $circID . "\n";
-		
+		echo "</head><body>Form data successfully validated for: $hostName <br />";
+		print "<textarea name='nowrap' rows='40' cols='130'>";
+		print "session writelock " . "\n";
+		print "interface edit Management dhcp disable" . "\n";
+		print "interface edit Network dhcp disable" . "\n";
+		print "interface edit Management address " . $manaIP . " netmask " . $manaMask . " gateway " . $gateIP . "\n";
+		print "interface edit Auto state disable" . "\n";
+		print "dns edit hostname $hostName.ND01" . "\n";
+		print "snmp edit ro-community 1234!" . "\n";
+		print "snmp edit rw-community 1234!!\n";
+		print "snmp edit use-host-name enable\n";
+		print "snmp edit state enable\n";
+    	print "history edit local state enable\n";
+		print "history edit local paa-period 1\n";
+		print "history edit local paa-filing enable\n";
+		print "history edit local regulator-filing enable\n";
+		print "history edit local regulator-period 1\n";
+		print "history edit file url ftp://conterra:c0nterraOC!@64.28.208.26/nid-uploads\n";
+		print "history edit file period-mode new\n";
+		print "history edit file include-previous enable\n";
+		print "history edit scheduling local-minutes 00H00,00H15,00H30,00H45\n";
+		print "history edit scheduling local-hours 00H00,01H00,02H00,03H00,04H00,05H00,06H00,07H00,08H00,09H00,10H00,11H00,12H00,13H00,14H00,15H00,16H00,17H00,18H00,19H00,20H00,21H00,22H00,23H00\n";
+		print "history edit scheduling local-state enable\n";
+		print "bandwidth-regulator add 20MB cir 20000 cbs 8 eir 1000 ebs 8 color-mode blind coupling-flag false\n";
+		if ($arrayCount > 0) {
+			for ($i=0; $i<$arrayCount; $i++) {
+				print "bandwidth-regulator add $tempCircID[$i] cir 100000 cbs 64 eir 1000 ebs 64 color-mode blind coupling-flag false\n";
+			}
+		}
+		print "bandwidth-regulator add 100MB cir 100000 cbs 8 eir 1000 ebs 8 color-mode blind coupling-flag false\n";
+		print "bandwidth-regulator add 1000MB cir 1000000 cbs 8 eir 1000 ebs 8 color-mode blind coupling-flag false\n";
+		print "ntp delete ca.pool.ntp.org\n";
+		print "ntp delete us.pool.ntp.org\n";
+		print "ntp edit sync-mode normal\n";
+		print "ntp add 64.28.208.9\n";
+		print "ntp enable 64.28.208.9\n";
+		print "media-selection select SFP-A_SFP-B\n";
+		print "ntp enable-server\n";
+		print "rfc2544 testsuite add 25meg port Network description 25meg test throughput maximum 25\n";
+		print "rfc2544 testsuite add 50meg port Network description 50meg test throughput maximum 50\n";
+		print "rfc2544 testsuite add 100meg port Network description 100meg test throughput maximum 100\n";
+		print "user edit admin password\n";
+		print "password\n";
+		print "password\n";
+		print "port edit Network mtu 9012\n";
+		print "port edit Client mtu 9012\n";
+		print "session edit timeoutweb 900\n";
+		print "session edit timeoutcli 900\n";
+		print "oam add loopback port Network\n";
+		print "loopback edit loopback state enable remote-lpbk-acterna enable\n";
+		print "loopback edit loopback remote-lpbk-oam enable\n";
+		print "loopback edit loopback remote-lpbk-veex enable\n";
+		print "loopback edit loopback remote-lpbk-sunrise enable\n";
+		print "loopback edit loopback tagged-cmds enable\n";
 		echo "</textarea>";
 		require_once 'footer.html';
 		exit;
@@ -60,17 +109,15 @@ $fail .= validateInsideMask($manaMask);
 echo <<<_END
 <p>$fail</p>
 <br />
-<form name="form" action="metronid.php" method="post" onSubmit="return metronidValidate();">
+<form name="form" action="metronid.php" method="post" onSubmit="return metroValidate(this);">
 Management IP: <input type='text' size="20" maxlength='50' name='manaIP' value='$manaIP' /><br />
 Management Mask: <input type='text' size="20" maxlength='50' name='manaMask' value='$manaMask' /><br />
-Gateway IP: <input type='text' size='20' maxlength='30' name'gateIP' value='$gateIP' /><br />
+Gateway IP: <input type='text' size='20' maxlength='30' name='gateIP' value='$gateIP' /><br />
 Host Name: <input type='text' size="20" maxlength="25" name='hostName' value='$hostName' /><br />
-Circuit ID: <input type='text' size="10" maxlength="15" name='circID' value='$circID' /><br />
+Circuit ID: <input type='text' size="10" maxlength="50" name='circID' value='$circID' /><br />
 <input type='submit' value='submit' />
 </form>
 
-</body>
-</html>
 _END;
 
 require_once 'footer.html';

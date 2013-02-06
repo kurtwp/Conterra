@@ -1,44 +1,39 @@
 <?php
 
-// Validate Circuit ID
-function validateCircuitID($cID) {
+// Validate VlAN
+function validateVLAN($vlan) {
     
-    if ($cID != "") {
-		$regexp = '/[cC][tT][sS]\d{5}/';
-		$tempID = explode(",",$cID);
-		$arrayCount = count($tempID);
-		$results = 0;
-		for ($i=0; $i<$arrayCount; $i++) {
-			if (preg_match($regexp, $tempID[$i])) {
-				$results += 1;
-			} 
-		}
-		if ($results < $arrayCount ) {
-			return "Invalid Circuit ID <br />";
-		} else {
-			return "";
-		}
-	} else {
-		return "Please enter a Circuit ID! <be />";
-	}
+    // Reg Ex checks for postive numbers only
+    $regexp = '/^\d+$/';
+    
+    if ($vlan != "") {
+        if (preg_match($regexp, $vlan))
+        {
+            return "";
+        } else {
+            return "VLAN ID must be all numbers !";
+        }
+    } else {
+        return "Please enter a VLAN Number !<br />";
+    }
 }
-// Validate Host Name
-function validateHostName($name) {
+// Validate Region Name
+function validate_regionName($name) {
     
-    $regexp = '/[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z]{7}\.[nN][dD]\d{2}/';
+    $regexp = '/[a-zA-Z][a-zA-Z]\.[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z]\.[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z]/';
     
     if ($name != "") {
         if (preg_match($regexp, $name)) {
             return "";
         } else {
-            return "Pleae check your HOST NAME for correct format <br />";
+            return "Pleae check you region name for correct format <br />";
         }
     } else {
-        return "Please enter a HOST NAME !<br />";
+        return "Please enter a Region Name !<br />";
     }
 }
-//Validates Management Mask
-function validateManagementMask($mask) {
+//Validates Inside Masks
+function validateInsideMask($mask) {
     
     $octect = array(0,128,192,224,240,248,252,254,255);
 
@@ -78,37 +73,24 @@ function validateManagementMask($mask) {
         return "Please enter an Inside Mask !<br />";
     }
 }
-// Validate Gateway IP
-function validateGatewayIP($gip)
+// Validates Outside IP
+function validateOutsideIP($ip)
 {
-    if ($gip != "") {
-        $regexp = '/^((1?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(1?\d{1,2}|2[0-4]\d|25[0-5])$/';
-        $tempIP = explode(",",$gip);
-        $arrayCount = count($tempIP);
-        $results = 0;
-        for ($i=0; $i<$arrayCount; $i++) {
-            $firstOctect = explode(".",$tempIP[$i]);
-            if (preg_match($regexp, $tempIP[$i])) {
-                if ($firstOctect[0] != 10) {
-                    $results += 1;
-                    echo $results;
-                } 
-            } else {
-                return "Invalid IP !<br />";
-            }
-        }
-        if ($results > 0) {
-            return "First Octect needs to start with 10 <br />";
-        } else {
-            return "";
-        }
+    $regexp = '/^((1?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(1?\d{1,2}|2[0-4]\d|25[0-5])$/';
+    
+    if (preg_match($regexp, $ip))
+    {
+        return "";
+    } elseif ($ip == "") {
+	return "Please enter an Outside IP address ! <br />";
     } else {
-        return "Please enter a Gaetway IP address ! <br />";
+	return "Outside IP not valid ! <br />";
     }
     
+    
+    
 }
-// Validate Management IP
-function validateManagementIP($ip)
+function validateInsideIP($ip)
 {
     if ($ip != "") {
         $regexp = '/^((1?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(1?\d{1,2}|2[0-4]\d|25[0-5])$/';
@@ -123,7 +105,7 @@ function validateManagementIP($ip)
                     echo $results;
                 } 
             } else {
-                return "Invalid IP !<br />";
+                return "Invalid IP <br />";
             }
         }
         if ($results > 0) {
@@ -132,7 +114,7 @@ function validateManagementIP($ip)
             return "";
         }
     } else {
-        return "Please enter a Management IP address ! <br />";
+        return "Please enter an Inside IP address ! <br />";
     }
     
 }

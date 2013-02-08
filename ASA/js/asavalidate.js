@@ -59,7 +59,7 @@
 		
 	}
 	
-	function validateInsideMask(field){
+	function validateInsideMask(field) {
 		
 		var octect = [0,128,192,224,240,248,252,254,255];
 		

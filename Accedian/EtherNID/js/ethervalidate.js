@@ -125,7 +125,7 @@
 	function validateNTPIP(field) {
 		var regexp = /^((1?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(1?\d{1,2}|2[0-4]\d|25[0-5])$/;
 		if (field != "") {
-			if (field.match.(regexp)) {
+			if (field.match(regexp)) {
 				var tmpArray = field.split(".");
 				if (tmpArray[0] != 10) {
 					return "First Octet needs to start with 10!\n";
@@ -134,19 +134,20 @@
 				}
 			} else {
 				return "Invalid IP address\n";
-			}
+			}	
 		} else {
 			return "Please enter in an the NTP Server IP which should be the IP of the MetroNID!\n";
 		}
 	}
-function etherValidate(form) {
+	
+function ethervalidate(form) {
 	
 	fail  = validateHostName(form.hostName.value)
-/*	fail += validateGatewayIP(form.gateIP.value)
+	fail += validateGatewayIP(form.gateIP.value)
 	fail += validateManagementIP(form.manaIP.value)
 	fail += validateManagementMask(form.manaMask.value)
 	fail += validateCircuitID(form.circID.value)
-	fail += validateNTPIP(form.ntpIP.value) */
+	fail += validateNTPIP(form.ntpIP.value) 
 	if (fail == "") return true
 	else { alert(fail); return false }
 	

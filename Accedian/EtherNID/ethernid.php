@@ -1,5 +1,5 @@
 <?php
-require_once 'eheader.html';
+require_once 'header.html';
 require_once 'functions/etherFunctions.php';
 //$i = 0; // for counter
 $arrayCount = 0; // Amount of elements in an Array
@@ -111,7 +111,7 @@ $fail .= validateNTPIP($ntpIP);
 echo <<<_END
 <p>$fail</p>
 <br />
-<form name="form" action="ethernid.php" method="post" onSubmit="return metroValidate(this);">
+<form name="form" action="ethernid.php" method="post" onSubmit="return etherValidate(this);">
 Management IP: <input type='text' size="20" maxlength='50' name='manaIP' value='$manaIP' /><br />
 Management Mask: <input type='text' size="20" maxlength='50' name='manaMask' value='$manaMask' /><br />
 Gateway IP: <input type='text' size='20' maxlength='30' name='gateIP' value='$gateIP' /><br />

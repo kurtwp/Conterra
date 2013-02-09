@@ -111,14 +111,37 @@ $fail .= validateNTPIP($ntpIP);
 echo <<<_END
 <p>$fail</p>
 <br />
-<form name="form" action="ethernid.php" method="post" onSubmit="return ethervalidate(this);">
-Management IP: <input type='text' size="20" maxlength='50' name='manaIP' value='$manaIP' /><br />
-Management Mask: <input type='text' size="20" maxlength='50' name='manaMask' value='$manaMask' /><br />
-Gateway IP: <input type='text' size='20' maxlength='30' name='gateIP' value='$gateIP' /><br />
-Host Name: <input type='text' size="20" maxlength="25" name='hostName' value='$hostName' /><br />
-Circuit ID: <input type='text' size="10" maxlength="50" name='circID' value='$circID' /><br />
-NTP Server IP: <input type='text' size='10' maxlength='20' name='ntpIP' value='$ntpIP' /><br />
-<input type='submit' value='submit' />
+<form id="contactform" name="form" action="ethernid.php" method="post" onSubmit="return ethervalidate(this);">
+<h3>Accedian EtherNID</h3>
+<div class="field">
+	<label for="manaIP" >Management IP: </label>
+	<input type='text' class='input' size="20" maxlength='50' name='manaIP' value='$manaIP' /><br />
+</div>
+<div class="field">
+	<label for="manaMask" >Management Mask: </label>
+	<input type='text' class='input' size="20" maxlength='50' name='manaMask' value='$manaMask' /><br />
+	<br />
+</div>
+<div class="field">
+	<label for="gateIP" >Gateway IP: </label>
+	<input type='text' class='input' size='20' maxlength='30' name='gateIP' value='$gateIP' /><br />
+</div>
+<div class="field">
+	<label for"hostName">Host Name: </label>
+	<input type='text' class='input' size="20" maxlength="25" name='hostName' value='$hostName' /><br />
+</div>
+<div class="field">
+	<label for="circID">Circuit ID: </label>
+	<input type='text' class='input' size="10" maxlength="50" name='circID' value='$circID' /><br />
+	<p class='hint'>To enter in multiple Circuit ID use "," in between:<br />
+	CTS11223,CTS11817,CTS11525</p>
+</div>
+<div class="field">
+	<label for="ntpIP">NTP Server IP: </label>
+	<input type='text' class='input' size='10' maxlength='20' name='ntpIP' value='$ntpIP' /><br />
+	<p class='hint'>Same as the MetroNID Manament IP</p>
+</div>
+<input type='submit' class='button' value='submit' />
 </form>
 
 _END;

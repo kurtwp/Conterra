@@ -94,10 +94,18 @@ echo <<<_END
 <div class='field'>
 	<label for='insideNetwork'>Inside Network IP: </label>
 	<input type='text' class='input' size="20" maxlength='150' name='insideNetwork' value='$insideNetwork' />
+	<p class='hint'>To enter in multiple Inside Network IPs use "," in between:<br />
+	e.g. - 10.102.150.0,10.102.150.8,10.102.150.16</p>
 </div>
-Mask: <input type='text' size="20" maxlength='50' name='insideMask' value='$insideMask' /><br />
-Map #: <input type='text' size="10" maxlength='10' name='mapNumber' value='$mapNumber' /><br />
-<input type='submit' value='submit' />
+<div class='field'>
+	<label for='insideMask'>Mask: </label>
+	<input type='text' class='input' size="20" maxlength='50' name='insideMask' value='$insideMask' /><br />
+</div>
+<div class='field'>
+	<label for='mapNumber'>Crypto Map #: </label>
+	<input type='text' class='input' size="10" maxlength='10' name='mapNumber' value='$mapNumber' /><br />
+</div>
+<input type='submit' class='button' value='submit' />
 </form>
 </div>
 </body>

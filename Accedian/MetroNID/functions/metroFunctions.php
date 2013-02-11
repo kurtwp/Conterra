@@ -19,7 +19,7 @@ function validateCircuitID($cID) {
 			return "";
 		}
 	} else {
-		return "Please enter a Circuit ID! <be />";
+		return "Please enter a Circuit ID! <br />";
 	}
 }
 // Validate Host Name
@@ -103,7 +103,7 @@ function validateGatewayIP($gip)
             return "";
         }
     } else {
-        return "Please enter a Gaetway IP address ! <br />";
+        return "Please enter a Gateway IP address ! <br />";
     }
     
 }

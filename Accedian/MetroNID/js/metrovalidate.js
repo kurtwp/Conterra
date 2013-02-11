@@ -122,13 +122,13 @@
 		}
 	}
 	
-function metroValidate(form) {
+function metrovalidate(form) {
 
 	fail  = validateHostName(form.hostName.value)
 	fail += validateGatewayIP(form.gateIP.value)
 	fail += validateManagementIP(form.manaIP.value)
 	fail += validateManagementMask(form.manaMask.value)
-//	fail += validateCircuitID(form.circID.value)
+	fail += validateCircuitID(form.circID.value)
 	if (fail == "") return true
 	else { alert(fail); return false }
 	

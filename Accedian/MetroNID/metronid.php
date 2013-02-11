@@ -111,7 +111,7 @@ echo <<<_END
 <div id=container>
 <p>$fail</p>
 <br />
-<form id='contactform' name="form" action="metronid.php" method="post" onSubmit="return metroValidate(this);">
+<form id='contactform' name="form" action="metronid.php" method="post" onSubmit="return metrovalidate(this);">
 <h3>Accedian MetroNID</h3>
 <div class="field">
 	<label for="manaIP" >Management IP: </label>

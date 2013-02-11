@@ -44,7 +44,7 @@ $fail .= validateGatewayIP($gateIP);
 
 	if ($fail == "") {
 		// Start to print the MetroNID configuration
-		echo "</head><body>Form data successfully validated for: $hostName <br />";
+		echo "</head><body><div id=containerForm data successfully validated for: $hostName <br />";
 		print "<textarea name='nowrap' rows='40' cols='130'>";
 		print "session writelock " . "\n";
 		print "interface edit Management dhcp disable" . "\n";
@@ -99,6 +99,7 @@ $fail .= validateGatewayIP($gateIP);
 		print "loopback edit loopback remote-lpbk-sunrise enable\n";
 		print "loopback edit loopback tagged-cmds enable\n";
 		echo "</textarea>";
+		echo "</div>";
 		require_once 'footer.html';
 		exit;
 	}
@@ -107,17 +108,37 @@ $fail .= validateGatewayIP($gateIP);
 }
 
 echo <<<_END
+<div id=container>
 <p>$fail</p>
 <br />
-<form name="form" action="metronid.php" method="post" onSubmit="return metroValidate(this);">
-Management IP: <input type='text' size="20" maxlength='50' name='manaIP' value='$manaIP' /><br />
-Management Mask: <input type='text' size="20" maxlength='50' name='manaMask' value='$manaMask' /><br />
-Gateway IP: <input type='text' size='20' maxlength='30' name='gateIP' value='$gateIP' /><br />
-Host Name: <input type='text' size="20" maxlength="25" name='hostName' value='$hostName' /><br />
-Circuit ID: <input type='text' size="10" maxlength="50" name='circID' value='$circID' /><br />
-<input type='submit' value='submit' />
+<form id='contactform' name="form" action="metronid.php" method="post" onSubmit="return metroValidate(this);">
+<h3>Accedian MetroNID</h3>
+<div class="field">
+	<label for="manaIP" >Management IP: </label>
+	<input type='text' class='input' size="20" maxlength='50' name='manaIP' value='$manaIP' /><br />
+</div>
+<div class="field">
+	<label for="manaMask" >Management Mask: </label>
+	<input type='text' class='input' size="20" maxlength='50' name='manaMask' value='$manaMask' /><br />
+	<br />
+</div>
+<div class="field">
+	<label for="gateIP" >Gateway IP: </label>
+	<input type='text' class='input' size='20' maxlength='30' name='gateIP' value='$gateIP' /><br />
+</div>
+<div class="field">
+	<label for="hostName">Host Name: </label>
+	<input type='text' class='input' size="20" maxlength="25" name='hostName' value='$hostName' /><br />
+</div>
+<div class="field">
+	<label for="circID">Circuit ID: </label>
+	<input type='text' class='input' size="10" maxlength="50" name='circID' value='$circID' /><br />
+	<p class='hint'>To enter in multiple Circuit ID use "," in between:<br />
+	CTS11223,CTS11817,CTS11525</p>
+</div>
+<input type='submit' class='button' value='submit' />
 </form>
-
+</div>
 _END;
 
 require_once 'footer.html';

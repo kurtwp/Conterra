@@ -50,7 +50,7 @@ $fail .= validateVLAN($mapNumber);
 echo "<html><head><title>An Example Form</title>";
 
     if ($fail == "") {
-	echo "</head><body>Form data successfully validated for: $regionName </body></html>";
+	echo "</head><body><div id=container>Form data successfully validated for: $regionName </body></html>";
     
 	// Start to print the ASA rules
 	if ($arrayCount > 0)
@@ -69,6 +69,7 @@ echo "<html><head><title>An Example Form</title>";
 	echo "tunnel-group" . " " . $outsideIP . " " . "ipsec-attributes" . "\n";
 	echo "pre-shared-key" . " " . $preShareKey . "\n";
 	echo "</textarea>";
+	echo "</div>";
 	}
     require_once 'footer.html';
     exit;
@@ -77,24 +78,33 @@ echo "<html><head><title>An Example Form</title>";
 }
 
 echo <<<_END
-
+<div id=container>
 <p>$fail</p>
-
 <br />
-<form action"asa.php" method="post" onSubmit="return validate(this)">
-Region: <input type='text' size="20" maxlength='50' name='regionName' value='$regionName' /><br />
-Outside IP: <input type='text' size="20" maxlength='50' name='outsideIP' value='$outsideIP' /><br />
-Enter multiple Inside networks  by putting a comma after the network e.g. IP<strong>,</strong>IP<strong>,</strong>IP- only works with IP not masks <br />
-Inside Network IP: <input type='text' size="20" maxlength='150' name='insideNetwork' value='$insideNetwork' />
+<form id='contactform' name='form' action"asa.php" method="post" onSubmit="return asavalidate(this);">
+<h3>Cisco ASA5520 Configuration</h3>
+<div class="field">
+	<label for='regionName'>Region: </label>
+	<input type='text' class='input' size="20" maxlength='50' name='regionName' value='$regionName' /><br />
+</div>
+<div class="field">
+	<label for='outsideIP'>Outside IP: </label>
+	<input type='text' class='input' size="20" maxlength='50' name='outsideIP' value='$outsideIP' /><br />
+</div>
+<div class='field'>
+	<label for='insideNetwork'>Inside Network IP: </label>
+	<input type='text' class='input' size="20" maxlength='150' name='insideNetwork' value='$insideNetwork' />
+</div>
 Mask: <input type='text' size="20" maxlength='50' name='insideMask' value='$insideMask' /><br />
 Map #: <input type='text' size="10" maxlength='10' name='mapNumber' value='$mapNumber' /><br />
 <input type='submit' value='submit' />
 </form>
-
+</div>
 </body>
 </html>
 _END;
 
+require_once 'footer.html'
 
 
 ?>

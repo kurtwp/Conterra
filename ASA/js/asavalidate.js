@@ -108,7 +108,7 @@
 		}
 	}
 	
-function validate(form) {
+function asavalidate(form) {
 
 	fail  = validateRegionName(form.regionName.value)
 	fail += validateOutsideIP(form.outsideIP.value)

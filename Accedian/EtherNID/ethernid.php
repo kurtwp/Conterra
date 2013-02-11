@@ -1,5 +1,5 @@
 <?php
-require_once 'eheader.html';
+require_once 'header.html';
 require_once 'functions/etherFunctions.php';
 //$i = 0; // for counter
 $arrayCount = 0; // Amount of elements in an Array
@@ -129,7 +129,7 @@ echo <<<_END
 	<input type='text' class='input' size='20' maxlength='30' name='gateIP' value='$gateIP' /><br />
 </div>
 <div class="field">
-	<label for"hostName">Host Name: </label>
+	<label for="hostName">Host Name: </label>
 	<input type='text' class='input' size="20" maxlength="25" name='hostName' value='$hostName' /><br />
 </div>
 <div class="field">

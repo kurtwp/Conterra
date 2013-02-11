@@ -50,7 +50,7 @@ $fail .= validateNTPIP($ntpIP);
 
 	if ($fail == "") {
 		// Start to print the MetroNID configuration
-		echo "</head><body>Form data successfully validated for: $hostName <br />";
+		echo "</head><body><div id=container>Form data successfully validated for: $hostName <br />";
 		print "<textarea name='nowrap' rows='40' cols='130'>";
 		print "session writelock " . "\n";
 		print "interface edit Management dhcp disable" . "\n";
@@ -101,6 +101,7 @@ $fail .= validateNTPIP($ntpIP);
 		print "loopback edit loopback remote-lpbk-sunrise enable\n";
 		print "loopback edit loopback tagged-cmds enable\n";
 		echo "</textarea>";
+		echo "</div>";
 		require_once 'footer.html';
 		exit;
 	}
@@ -109,6 +110,7 @@ $fail .= validateNTPIP($ntpIP);
 }
 
 echo <<<_END
+<div id=container>
 <p>$fail</p>
 <br />
 <form id="contactform" name="form" action="ethernid.php" method="post" onSubmit="return ethervalidate(this);">
@@ -143,7 +145,7 @@ echo <<<_END
 </div>
 <input type='submit' class='button' value='submit' />
 </form>
-
+</div>
 _END;
 
 require_once 'footer.html';

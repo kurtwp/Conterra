@@ -7,8 +7,12 @@
 	.container{margin: 20px auto; width: 900px; background: #fff;}
 	h3 { margin-bottom: 15px; font-size: 22px; text-shadow: 2px 2px 2px #ccc; }
 	
+    #container {
+        width: 950px;
+        padding-top: 5px;
+        margin: 20px auto;
+    }
 	#contactform {
-	
 	width: 500px;
 	padding: 20px;
 	background: #f0f0f0;

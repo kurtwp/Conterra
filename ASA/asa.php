@@ -1,5 +1,5 @@
 <?php
-require_once 'header.html';
+require_once '../header.html';
 require_once 'functions/asaFunctions.php';
 $i = 0; // for counter
 $arrayCount = 0; // Amount of elements in an Array
@@ -71,7 +71,7 @@ echo "<html><head><title>An Example Form</title>";
 	echo "</textarea>";
 	echo "</div>";
 	}
-    require_once 'footer.html';
+    require_once '../footer.html';
     exit;
     } 
 
@@ -112,7 +112,7 @@ echo <<<_END
 </html>
 _END;
 
-require_once 'footer.html'
+require_once '../footer.html'
 
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-require_once 'header.html';
+require_once '../../header.html';
 require_once 'functions/metroFunctions.php';
 //$i = 0; // for counter
 $arrayCount = 0; // Amount of elements in an Array
@@ -11,7 +11,9 @@ $manaMask = ""; // MetroNID Management Subnet Mask
 $tempCircID = ""; // Place holder after explode function
 $fail = "";
 //$field = "";
-
+// The below lines will print your WEB ROOT Path
+// $web_root = "http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/";
+// echo $web_root;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['hostName']))
     {
@@ -100,7 +102,7 @@ $fail .= validateGatewayIP($gateIP);
 		print "loopback edit loopback tagged-cmds enable\n";
 		echo "</textarea>";
 		echo "</div>";
-		require_once 'footer.html';
+		require_once '../../footer.html';
 		exit;
 	}
 	
@@ -141,6 +143,6 @@ echo <<<_END
 </div>
 _END;
 
-require_once 'footer.html';
+require_once '../../footer.html';
 
 ?>

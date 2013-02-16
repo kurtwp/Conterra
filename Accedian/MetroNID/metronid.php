@@ -46,7 +46,8 @@ $fail .= validateGatewayIP($gateIP);
 
 	if ($fail == "") {
 		// Start to print the MetroNID configuration
-		echo "</head><body><div id=containerForm data successfully validated for: $hostName <br />";
+		require_once '../../header.html';
+		echo "<div id=container>Form data successfully validated for: $hostName <br />";
 		print "<textarea name='nowrap' rows='40' cols='130'>";
 		print "session writelock " . "\n";
 		print "interface edit Management dhcp disable" . "\n";

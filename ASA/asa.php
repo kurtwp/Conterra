@@ -50,7 +50,8 @@ $fail .= validateVLAN($mapNumber);
 echo "<html><head><title>An Example Form</title>";
 
     if ($fail == "") {
-	echo "</head><body><div id=container>Form data successfully validated for: $regionName </body></html>";
+	require_once '../header.html';
+	echo "<div id=container>Form data successfully validated for: $regionName </body></html>";
     
 	// Start to print the ASA rules
 	if ($arrayCount > 0)

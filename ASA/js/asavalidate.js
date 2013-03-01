@@ -2,7 +2,7 @@
 	// Validate Region Name
 	function validateRegionName(field){
 		
-		var regexp = /[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z]{7}/;
+		var regexp = /[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z\d]{7}/;
 		
 		if (field != "") {
 			if 	(field.match(regexp)) {

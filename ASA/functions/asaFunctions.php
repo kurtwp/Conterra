@@ -20,7 +20,7 @@ function validateVLAN($vlan) {
 // Validate Region Name
 function validate_regionName($name) {
     
-    $regexp = '/[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z]{7}/';
+    $regexp = '/[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z\d]{7}/';
     
     if ($name != "") {
         if (preg_match($regexp, $name)) {

@@ -25,7 +25,7 @@ function validateCircuitID($cID) {
 // Validate Host Name
 function validateHostName($name) {
     
-    $regexp = '/[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z]{7}\.[nN][dD]\d{2}/';
+    $regexp = '/[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z]{3}[a-zA-Z\d]{4}\.[nN][dD]\d{2}/';
     
     if ($name != "") {
         if (preg_match($regexp, $name)) {

@@ -2,7 +2,7 @@
 	// Validate Host Name
 	function validateHostName(field){
 		
-		var regexp = /[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z]{7}\.[nN][dD]\d{2}/;
+		var regexp = /[a-zA-Z]{2}\.[a-zA-Z]{4}\.[a-zA-Z]{3}[a-zA-Z\d]{4}\.[nN][dD]\d{2}/;
 		
 		if (field != "") {
 			if 	(field.match(regexp)) {

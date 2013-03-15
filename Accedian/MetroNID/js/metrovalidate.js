@@ -103,7 +103,7 @@
 		} else {
 			return "Pleae enter a Management Mask \n";
 		}
-		
+		return "";
 	}
 	// Validate Circuit ID
 	function validateCircuitID(field){

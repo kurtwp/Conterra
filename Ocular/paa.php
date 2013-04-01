@@ -31,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         move_uploaded_file($_FILES['paa']['tmp_name'], 'C:\wamp\tmp\paa.cvs.gz');
         $lines = gzfile('C:\wamp\tmp\paa.cvs.gz');
         $linesCount = count($lines);
-        echo "<table Border='1'>";
+        require_once "../header.html";
+        echo "<table id='customers'>";
         echo "Lines in GZ = " . $linesCount . "<br />";
         foreach ($lines as $line) {
             echo "<tr>";
@@ -42,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             echo "</tr>";
         }
         echo "</table>";
-        fclose("$lines");
-        unlink("C:/wamp/tmp/paa.cvs.gz");
+        require_once '../footer.html';
+       // fclose("$lines");
+       // unlink("C:/wamp/tmp/paa.cvs.gz");
         exit;
     }
 }

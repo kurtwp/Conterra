@@ -1,7 +1,8 @@
 <?php
 require_once '../header.html';
-$fldNmbers = ""; //Hold for field numbers
+$fldNmbers = ""; //Place Holder for field numbers
 $fail = "";
+$k = 0;
 function validateFields($field) {
     if ($field != "") {
         $tempFields = explode(",", $field);
@@ -32,15 +33,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $lines = gzfile('C:\wamp\tmp\paa.cvs.gz');
         $linesCount = count($lines);
         require_once "../header.html";
-        echo "<table id='customers'>";
+        echo "<table id='hor-zebra'>";
         echo "Lines in GZ = " . $linesCount . "<br />";
         foreach ($lines as $line) {
-            echo "<tr>";
-            $fields = explode(",", $line);
-            for ($i=0; $i<$arrayCount;$i++) {
-                echo "<td>" . $fields[$tempFields[$i]] . "</td>";
+            if ($k == 0) {
+                echo "<tr>";
+                $fields = explode(",", $line);
+                for ($i=0; $i<$arrayCount;$i++) {
+                    echo "<th>" . $fields[$tempFields[$i]] . "</th>";
+                }
+                echo "</tr>";
+                $k++;
+            } else {
+                echo "<tr>";
+                $fields = explode(",", $line);
+                for ($i=0; $i<$arrayCount;$i++) {
+                    echo "<td>" . $fields[$tempFields[$i]] . "</td>";
+                }
+                echo "</tr>";
             }
-            echo "</tr>";
         }
         echo "</table>";
         require_once '../footer.html';

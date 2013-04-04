@@ -27,26 +27,37 @@ background-color:#EAF2D3;
 
 #hor-zebra
 {
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
+/*	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; */
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1em;
 	margin: 45px;
-	width: 480px;
+	/*width: 480px; */
 	text-align: left;
 	border-collapse: collapse;
+   
 }
 #hor-zebra th
 {
-	font-size: 14px;
+	font-size: 1em;
 	font-weight: normal;
 	padding: 10px 8px;
-	color: #039;
+	color: #000080;
+    background: #b9c9fe;
+	border-top: 1px solid #000080;
+    border-left: 1px solid #000080;
+    border-right: 1px solid #000080;
+	border-bottom: 4px solid #000080;
+    text-align: center;
 }
 #hor-zebra td
 {
-	padding: 8px;
-	color: #669;
+    border: 1px solid #000080;
+	padding: 5px;
+	color: #000080;
 }
 #hor-zebra .odd
 {
-	background: #e8edff; 
+	background: #e8edff;
+    border: 1px solid #000080;
+	padding: 5px;
 }

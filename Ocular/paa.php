@@ -44,12 +44,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
                 echo "</tr>";
                 $k++;
-            } else {
+            } elseif ($k%2 == 0) {
                 echo "<tr>";
                 $fields = explode(",", $line);
                 for ($i=0; $i<$arrayCount;$i++) {
                     echo "<td>" . $fields[$tempFields[$i]] . "</td>";
                 }
+                  $k++;
+                echo "</tr>";
+            } else {
+                echo "<tr class='odd'>";
+                $fields = explode(",", $line);
+                for ($i=0; $i<$arrayCount;$i++) {
+                    echo "<td >" . $fields[$tempFields[$i]] . "</td>";
+                }
+                  $k++;
                 echo "</tr>";
             }
         }

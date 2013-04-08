@@ -46,8 +46,9 @@ $fail .= validateGatewayIP($gateIP);
 
 	if ($fail == "") {
 		// Start to print the MetroNID configuration
-		echo "<div id='right_box'>Form data successfully validated for: $hostName <br />";
-		print "<textarea name='nowrap' rows='40' cols='82'>";
+		require_once '../../header.html';
+		echo "<div id=container>Form data successfully validated for: $hostName <br />";
+		print "<textarea name='nowrap' rows='40' cols='130'>";
 		print "session writelock " . "\n";
 		print "interface edit Management dhcp disable" . "\n";
 		print "interface edit Network dhcp disable" . "\n";
@@ -102,8 +103,7 @@ $fail .= validateGatewayIP($gateIP);
 		print "loopback edit loopback tagged-cmds enable\n";
 		echo "</textarea>";
 		echo "</div>";
-		echo "</body>";
-		echo "</html>";
+		require_once '../../footer.html';
 		exit;
 	}
 	
@@ -111,7 +111,7 @@ $fail .= validateGatewayIP($gateIP);
 }
 
 echo <<<_END
-<div id="right_box">
+<div id=container>
 <p>$fail</p>
 <br />
 <form id='contactform' name="form" action="metronid.php" method="post" onSubmit="return metrovalidate(this);">
@@ -142,8 +142,8 @@ echo <<<_END
 <input type='submit' class='button' value='submit' />
 </form>
 </div>
-</body>
-</html>
 _END;
+
+require_once '../../footer.html';
 
 ?>

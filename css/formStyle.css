@@ -2,15 +2,19 @@
     /*http://gazpo.com/2011/02/form*/
     
     * { margin: 0; padding: 0; }
-	body {font-family: Verdana, Arial; font-size: 12px; line-height: 18px; }
+	body {
+		font-family: Verdana, Arial;
+		font-size: 12px;
+		line-height: 18px;
+	}
 	a { text-decoration: none; }
-	.container{margin: 20px auto; width: 900px; background: #fff;}
+/*	.container{margin: 20px auto; width: 900px; background: #fff;} */
 	h3 { margin-bottom: 15px; font-size: 22px; text-shadow: 2px 2px 2px #ccc; }
-	
     #container {
         width: 950px;
         padding-top: 5px;
-        margin: 20px auto;
+    /*    margin-left: 300px; */
+		padding: 10px;
     }
 	#contactform {
 	width: 500px;

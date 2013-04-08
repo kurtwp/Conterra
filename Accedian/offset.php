@@ -1,7 +1,7 @@
 <?php
 require_once '../header.html';
 echo <<<_END
-<div id='container'>
+<div id='right_box'>
     <div id='contactform'>
     <h3>Accedian NID History Offset Calculation</h3><br />
         <div class='field'>
@@ -11,14 +11,15 @@ echo <<<_END
         <p><input class='button' type='button' onclick='hstyOffset()' value='Submit'/><br /></p>
     </div>
 </div>
-<div id='container'>
+<div id='right_box'>
     <div id='contactform'>
         <div class='field'>
             <pre>Schedule Offset = <b id='myOutput'>_</b>    Random Offset = <b>30</b></pre>
         </div>
     </div>
 </div>
+</body>
+</html>
 _END;
 
-require_once '../footer.html';
 ?>

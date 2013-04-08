@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/formStyle.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/horiMenuDrop.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/tables.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/tree.css" />
+
+
+<title></title>
+
+<script src=//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js></script>
+
+<script type="text/javascript" src="/ASA/js/asavalidate.js"> </script> 
+<script type="text/javascript" src="/Accedian/MetroNID/js/metrovalidate.js"> </script>
+<script type="text/javascript" src="/Accedian/EtherNID/js/ethervalidate.js"> </script>
+<script type="text/javascript" src="/Accedian/offset.js"> </script>
+<script src=/jquery/main.js></script>
+
+
+</head>
+<body>

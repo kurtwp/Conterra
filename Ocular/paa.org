@@ -3,7 +3,6 @@ require_once '../header.html';
 $fldNmbers = ""; //Place Holder for field numbers
 $fail = "";
 $k = 0;
-
 function validateFields($field) {
     if ($field != "") {
         $tempFields = explode(",", $field);
@@ -29,16 +28,49 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } 
     $fail = validateFields($fldNmbers);
     if ($fail == "") {
+        echo $_FILES['paa']['name'] . "<br />";
         move_uploaded_file($_FILES['paa']['tmp_name'], 'C:\wamp\tmp\paa.cvs.gz');
-        session_start();
-       $_SESSION['fldNmbers'] = $fldNmbers;
-       $_SESSION['paa'] = $_FILES['paa']['name'];
-       header('Location: paa_out.php');
-       exit;
-    } 
+        $lines = gzfile('C:\wamp\tmp\paa.cvs.gz');
+        $linesCount = count($lines);
+        require_once "../header.html";
+        echo "<table id='hor-zebra'>";
+        echo "Lines in GZ = " . $linesCount . "<br />";
+        foreach ($lines as $line) {
+            if ($k == 0) {
+                echo "<tr>";
+                $fields = explode(",", $line);
+                for ($i=0; $i<$arrayCount;$i++) {
+                    echo "<th>" . $fields[$tempFields[$i]] . "</th>";
+                }
+                echo "</tr>";
+                $k++;
+            } elseif ($k%2 == 0) {
+                echo "<tr>";
+                $fields = explode(",", $line);
+                for ($i=0; $i<$arrayCount;$i++) {
+                    echo "<td>" . $fields[$tempFields[$i]] . "</td>";
+                }
+                  $k++;
+                echo "</tr>";
+            } else {
+                echo "<tr class='odd'>";
+                $fields = explode(",", $line);
+                for ($i=0; $i<$arrayCount;$i++) {
+                    echo "<td >" . $fields[$tempFields[$i]] . "</td>";
+                }
+                  $k++;
+                echo "</tr>";
+            }
+        }
+        echo "</table>";
+        require_once '../footer.html';
+       // fclose("$lines");
+       // unlink("C:/wamp/tmp/paa.cvs.gz");
+        exit;
+    }
 }
 echo <<<_END
-<div id="right_box">
+<div id="container">
 <p>$fail</p>
 <form id="contactform" action="paa.php" method="post" enctype="multipart/form-data">
 <h3>Ocular PAA/Regulator Check</h3>
@@ -53,12 +85,6 @@ echo <<<_END
    <input type='submit' class='sbutton' value='submit' /> 
 </form>
 </div>
-
-</div>
-</div>
-
-</body>
-</html>
 _END;
-
+require_once '../footer.html';
 ?>

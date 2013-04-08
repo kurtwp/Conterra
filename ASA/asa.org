@@ -47,14 +47,16 @@ $fail .= validateInsideIP($insideNetwork);
 $fail .= validateInsideMask($insideMask);
 $fail .= validateVLAN($mapNumber);
 
+echo "<html><head><title>An Example Form</title>";
+
     if ($fail == "") {
 	require_once '../header.html';
-	echo "<div id=container>Form data successfully validated for: $regionName ";
+	echo "<div id=container>Form data successfully validated for: $regionName </body></html>";
     
 	// Start to print the ASA rules
 	if ($arrayCount > 0)
 	{
-	    echo "<textarea rows='18' cols='82'>";
+	    echo "<textarea rows='18' cols='130'>";
 	    for ($i=0; $i<$arrayCount;$i++)
 	    {
 		    echo "access-list" . " " .  $regionName . " " .  "extended permit ip 64.28.208.0 255.255.255.192  ".$tempInNetwork[$i] . " " . $insideMask . "\n";
@@ -70,8 +72,7 @@ $fail .= validateVLAN($mapNumber);
 	echo "</textarea>";
 	echo "</div>";
 	}
-	echo "</body>";
-	echo "</html>";
+    require_once '../footer.html';
     exit;
     } 
 
@@ -81,7 +82,7 @@ echo <<<_END
 <div id=container>
 <p>$fail</p>
 <br />
-<form id='contactform' name='form' action="asa.php" method="post" onSubmit="return asavalidate(this);">
+<form id='contactform' name='form' action"asa.php" method="post" onSubmit="return asavalidate(this);">
 <h3>Cisco ASA5520 Configuration</h3>
 <div class="field">
 	<label for='regionName'>Region: </label>
@@ -111,5 +112,8 @@ echo <<<_END
 </body>
 </html>
 _END;
+
+require_once '../footer.html'
+
 
 ?>

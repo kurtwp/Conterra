@@ -2,22 +2,33 @@
 
 <html>
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="css/horiMenuDrop.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/formStyle.css" />
-    <title>Conterra Configuration</title>
-    
+
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/formStyle.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/horiMenuDrop.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/tables.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/tree.css" />
+
+
+<title>Tree Menu</title>
+
+<script src=//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js></script>
+
+<script type="text/javascript" src="/ASA/js/asavalidate.js"> </script> 
+<script type="text/javascript" src="/Accedian/MetroNID/js/metrovalidate.js"> </script>
+<script type="text/javascript" src="/Accedian/EtherNID/js/ethervalidate.js"> </script>
+<script type="text/javascript" src="/Accedian/offset.js"> </script>
+<script src=/jquery/main.js></script>
 </head>
 
 <body>
-<div id="container">
-    <p>
-        <img src="Conterralogo_Broadband.png" alt="Conterra Image"><br />
-    </p>
-    <div class="main_menu">
-        <ul>
+    <div id="wrapper">
+        <div id="left_box">
+        <ul class="tree">
             <li><a href="index.html">Home</a></li>
             <li><a href="#">Accedian</a>
+              <div class="expander"></div>  
                 <ul>
                     <li><a href="Accedian/MetroNID/metronid.php">MetroNID</a></li>
                     <li><a href="Accedian/EtherNID/ethernid.php">EtherNID</a></li>
@@ -25,28 +36,38 @@
                 </ul>
             </li>
             <li><a href="#">Ciena</a>
+               <div class="expander"></div>  
                 <ul>
                     <li><a href="#">3920</a></li>
                     <li><a href="#">3930</a></li>
                 </ul>
             </li>
             <li><a href="#">Cisco</a>
+              <div class="expander"></div>  
                 <ul>
                     <li><a href="ASA/asa.php">ASA5520</a></li>
                 </ul>
             </li>
             <li><a href="#">Ocular</a>
+              <div class="expander"></div>  
                 <ul>
-                    <li><a href="/Ocular/paa.php">Ocular Check</a></li>
+                    <li><a href="Ocular/paa.php">Ocular Check</a></li>
                 </ul>
             </li>
             <li><a href="#">ZyXEL</a>
+              <div class="expander"></div>  
                 <ul>
                     <li><a href="#">USG20</a></li>
                 </ul>
             </li>
         </ul>
+        </div>
+        <div id="right_box">
+            <p>
+               
+            </p>
+        </div>
     </div>
-</div>
+
 </body>
 </html>

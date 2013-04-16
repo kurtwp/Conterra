@@ -32,9 +32,31 @@
 	box-shadow: 2px 2px 2px #cccccc;
 	
 	}
-	
+	.leftcol {
+		float: left;
+		margin-left: 30px;
+		margin-top: 15px; 
+		width: 300px;
+	}
+	.rightcol {
+		float: right;
+		margin-top: 15px;
+		width: 320px;
+	}
+	.leftcols {
+		float: left;
+		margin: 15px 0 0 120px; 
+		width: 300px;
+	}
+	.rightcols {
+		float: right;
+		margin-top: 15px;
+		width: 270px;
+	}
+	.center {
+		text-align: center;
+	}
 	.field{margin-bottom:7px;}
-	
 	label {
 	font-family: Arial, Verdana; 
 	text-shadow: 2px 2px 2px #ccc;
@@ -157,4 +179,10 @@
 	.ciena li {
 		color: blue;
 		padding: 5px 0 0 10px;
+	}
+	.nid {
+		list-style-type: none;
+	}
+	.nid li {
+		padding-top: 5px;
 	}

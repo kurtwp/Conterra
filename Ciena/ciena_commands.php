@@ -61,6 +61,20 @@
         <li>ntp-client add server "IP Address"</li>
         <li>ntp-client md5-auth disable</li>
     </ul>
+    <br />
+    <h4>Configure SNMP </h4>
+    <ul class="ciena">
+        <li>snmp enable</li>
+        <li>snmp remove community private ip 0.0.0.0</li>
+        <li>snmp remove community public ip 0.0.0.0</li>
+        <li>snmp add community <?php require 'passsnmp.php'; ?> permission read-only ip 64.28.208.42</li>
+        <li>snmp add community <?php require 'passsnmp.php'; ?> permission read-only ip 64.28.208.41</li>
+        <li>snmp add trap-server 64.28.208.41 community <?php require 'passtrap.php'; ?></li>
+        <li>snmp add trap-server 64.28.208.42 community <?php require 'passtrap.php'; ?></li>
+        <li>snmp port-traps enable port 1-12  (note: enable traps on active ports)</li>
+        <li></li>
+    </ul>
+    <br />
 </div>
 
 </div>

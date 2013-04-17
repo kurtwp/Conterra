@@ -6,6 +6,12 @@
         <li>configuration save</li>
     </ul>
     <br />
+     <h4>Set Hostname</h4>
+    <ul class="ciena">
+        <li>system set host-name "host name"</li>
+        <li>system set host-name SE.HKBF.PORTERS.ES01</li>
+    </ul>
+    <br />
     <h4>Add Port discripition</h4>
     <ul class="ciena">
         <li>port set port 1 description "Data to MR01"</li>
@@ -42,6 +48,18 @@
     <ul class="ciena">
         <li>vlan remove vlan "vlan ID" port "port number"</li>
         <li>vlan remove vlan 1033-1035 port 2</li>
+    </ul>
+    <br />
+    <h4>Tag all Traffic on a Port</h4>
+    <ul class="ciena">
+        <li>port set 1 pvid 2</li>
+    </ul>
+    <br />
+    <h4>Configure NTP </h4>
+    <ul class="ciena">
+        <li>ntp-client set polling-interval 4096</li>
+        <li>ntp-client add server "IP Address"</li>
+        <li>ntp-client md5-auth disable</li>
     </ul>
 </div>
 

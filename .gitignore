@@ -205,7 +205,7 @@ Thumbs.db
 *.un~
 Session.vim
 
-# PHP Files
+# PHP FIles
 ######################
-passsnmp.php
 passtrap.php
+passsnmp.php

@@ -204,3 +204,8 @@ Thumbs.db
 .*.sw[a-z]
 *.un~
 Session.vim
+
+# PHP Files
+######################
+passsnmp.php
+passtrap.php

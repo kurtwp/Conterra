@@ -186,3 +186,11 @@
 	.nid li {
 		padding-top: 5px;
 	}
+	.cienaol {
+		list-style-type: decimal;
+		padding-left: 30px;
+	}
+	.cienaol li {
+		color: blue;
+		padding: 5px 0 0 10px;
+	}

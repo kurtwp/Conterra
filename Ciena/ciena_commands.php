@@ -41,7 +41,7 @@
     <h4>Add VLANs to a port.</h4>
     <ul class="ciena">
         <li>vlan add vlan "vlan ID" port "port number"</li>
-        <li>port set port 1033-1035,2001 port 2,6-11</li>
+        <li>vlan add vlan 2774,2809,2863,3774,3809,3863 port 5,6,8-10,EC1</li>
     </ul>
     <br />
     <h4>Remove VLANs from port</h4>
@@ -74,11 +74,8 @@
         <li>snmp port-traps enable port 1-12  (note: enable traps on active ports)</li>
         <li></li>
     </ul>
-    <br />
+    <br /> 
 </div>
-
 </div>
-
-
 </body>
 </html>
